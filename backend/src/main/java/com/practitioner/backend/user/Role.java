@@ -1,5 +1,7 @@
 package com.practitioner.backend.user;
 
-public class Role {
-    
+public enum Role {
+    CLIENT,
+    PRACTITIONER,
+    ADMIN
 }
