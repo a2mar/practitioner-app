@@ -2,7 +2,11 @@ package com.practitioner.backend.client;
 
 import com.practitioner.backend.user.User;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "clients")
 public class Client {
@@ -23,6 +27,4 @@ public class Client {
 
     @Column(name = "insurance_company")
     private String insuranceCompany;
-
-    // getters & setters
 }
