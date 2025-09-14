@@ -16,12 +16,13 @@ class PractitionerRepositoryTest extends AbstractIntegrationTest {
 
     @Autowired
     private UserRepository userRepository;
+    private static final String EMAIL = "doc@example.com";
 
     @Test
     void saveAndFindPractitioner() {
         // given: a user
         User user = new User();
-        user.setEmail("doc@example.com");
+        user.setEmail(EMAIL);
         user.setPasswordHash("secret");
         user.setFirstName("Jane");
         user.setLastName("Doe");
@@ -39,7 +40,13 @@ class PractitionerRepositoryTest extends AbstractIntegrationTest {
         Practitioner found = practitionerRepository.findById(practitioner.getId()).orElseThrow();
 
         // then
-        assertThat(found.getUser().getEmail()).isEqualTo("doc@example.com");
+        assertThat(found.getUser().getEmail()).isEqualTo(EMAIL);
         assertThat(found.getBio()).contains("TCM");
+
+        // round-trip through the whole entity:
+        assertThat(found)
+                .usingRecursiveComparison()
+                .ignoringFields("id")
+                .isEqualTo(practitioner);
     }
 }
