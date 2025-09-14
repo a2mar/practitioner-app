@@ -1,7 +1,11 @@
 package com.practitioner.backend.location;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "locations")
 public class Location {
@@ -14,6 +18,4 @@ public class Location {
 
     @Column(columnDefinition = "TEXT")
     private String address;
-
-    // getters & setters
 }
