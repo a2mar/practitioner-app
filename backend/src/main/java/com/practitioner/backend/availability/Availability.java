@@ -3,9 +3,13 @@ package com.practitioner.backend.availability;
 import com.practitioner.backend.practitioner.Practitioner;
 import com.practitioner.backend.location.Location;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "availability")
 public class Availability {
@@ -30,6 +34,4 @@ public class Availability {
 
     @Column(name = "is_public")
     private Boolean isPublic = true;
-
-    // getters & setters
 }
